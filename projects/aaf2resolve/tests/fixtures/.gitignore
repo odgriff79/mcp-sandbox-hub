@@ -1,0 +1,10 @@
+﻿# Don't commit large AAF files by default
+*.aaf
+*.AAF
+
+# But do allow specific test files if needed
+!simple.aaf
+!minimal.aaf
+
+# Allow CSV files for expected outputs
+!*.csv

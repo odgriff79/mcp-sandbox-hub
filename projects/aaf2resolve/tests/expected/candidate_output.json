@@ -1,0 +1,18 @@
+﻿{
+  "comment": "Expected canonical JSON output for candidate.aaf",
+  "timeline": {
+    "name": "candidate.Exported.01",
+    "rate": 25,
+    "start": "10:00:00:00",
+    "tracks": [
+      {
+        "clips": [
+          {
+            "comment": "This file should contain the expected 71 events",
+            "comment2": "Replace with actual expected output after first successful parse"
+          }
+        ]
+      }
+    ]
+  }
+}
