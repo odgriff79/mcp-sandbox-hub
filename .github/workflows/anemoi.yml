@@ -1,0 +1,36 @@
+name: Anemoi Agent
+
+on:
+  workflow_dispatch:
+    inputs:
+      model:
+        description: "Model profile"
+        required: false
+        default: "claude"
+      goal:
+        description: "Task goal"
+        required: false
+        default: ""
+      write:
+        description: "Write mode (none|commit|pr)"
+        required: false
+        default: "pr"
+      branch:
+        description: "Target branch (optional)"
+        required: false
+        default: ""
+      health_url:
+        description: "Codespace health URL (optional)"
+        required: false
+        default: ""
+
+jobs:
+  call-reusable:
+    uses: odgriff79/infra/.github/workflows/agent.yml@main
+    secrets: inherit
+    with:
+      model:      ${{ inputs.model }}
+      goal:       ${{ inputs.goal }}
+      write:      ${{ inputs.write }}
+      branch:     ${{ inputs.branch }}
+      health_url: ${{ inputs.health_url }}

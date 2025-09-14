@@ -1,0 +1,19 @@
+﻿name: Agents (Sandbox via Reusable Workflow)
+on:
+  workflow_dispatch:
+    inputs:
+      model:
+        description: "Model profile: claude | gpt | mix"
+        required: false
+        default: "claude"
+      health_url:
+        description: "Optional health URL to curl (e.g., https://<forwarded>.github.dev/health)"
+        required: false
+        default: ""
+jobs:
+  call-reusable:
+    uses: odgriff79/infra/.github/workflows/agent.yml@main
+    secrets: inherit
+    with:
+      model: ${{ github.event.inputs.model }}
+      health_url: ${{ github.event.inputs.health_url }}

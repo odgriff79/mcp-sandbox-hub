@@ -1,0 +1,24 @@
+{
+  "name": "mcp-sandbox-hub",
+  "image": "mcr.microsoft.com/devcontainers/universal:latest",
+  "forwardPorts": [8765],
+  "portsAttributes": {
+    "8765": {
+      "label": "Health Check",
+      "onAutoForward": "notify",
+      "visibility": "public"
+    }
+  },
+  "customizations": {
+    "vscode": {
+      "extensions": [
+        "ms-vscode.powershell",
+        "ms-python.python",
+        "GitHub.vscode-github-actions",
+        "redhat.vscode-yaml"
+      ]
+    }
+  },
+  "postStartCommand": "bash -c 'if [ -f /workspaces/mcp-sandbox-hub/tools/health_server.py ]; then pkill -f health_server.py 2>/dev/null || true; cd /workspaces/mcp-sandbox-hub && nohup python3 -u tools/health_server.py > /tmp/health.log 2>&1 & echo \"Health server started (PID: $!)\"; fi'",
+  "waitFor": "postStartCommand"
+}
